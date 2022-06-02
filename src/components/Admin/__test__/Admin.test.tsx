@@ -9,28 +9,43 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedUsedNavigate,
 }));
 
-test("input element in the admin page", () => {
-  render(<Admin />);
-  const inputElement = screen.getByTestId("parking-create-text-input");
-  expect(inputElement).toBeInTheDocument();
-});
+describe("Admin", () => {
+  it("should render", () => {
+    render(<Admin />);
+    expect(screen.getByText("Admin")).toBeInTheDocument();
+  });
 
-test("button element in document", () => {
-  render(<Admin />);
-  const buttonElement = screen.getByTestId("parking-create-submit-button");
-  expect(buttonElement).toBeInTheDocument();
-});
+  it("input element in the admin page", () => {
+    render(<Admin />);
+    const inputElement = screen.getByTestId("parking-create-text-input");
+    expect(inputElement).toBeInTheDocument();
+  });
 
-test("value in the input field", () => {
-  render(<Admin />);
-  const inputElement = screen.getByTestId("parking-create-text-input");
-  userEvent.type(inputElement, "2");
-  expect(inputElement.ariaValueText).toBe("2");
-});
+  it("button element in document", () => {
+    render(<Admin />);
+    const buttonElement = screen.getByTestId("parking-create-submit-button");
+    expect(buttonElement).toBeInTheDocument();
+  });
 
-test("handle click", () => {
-  render(<Admin />);
-  const buttonElement = screen.getByTestId("parking-create-submit-button");
-  fireEvent.click(buttonElement);
-  expect(jest.fn()).toHaveBeenCalledTimes(0);
+  it("value in the input field", () => {
+    render(<Admin />);
+    const inputElement = screen.getByTestId("parking-create-text-input");
+    expect(inputElement).toHaveValue("");
+  });
+  it("should navigate to slots page and create entered number of slots", () => {
+    render(<Admin />);
+    const inputElement = screen.getByTestId("parking-create-text-input");
+    const buttonElement = screen.getByTestId("parking-create-submit-button");
+    userEvent.type(inputElement, "2");
+    fireEvent.click(buttonElement);
+    expect(mockedUsedNavigate).toHaveBeenCalledWith("/slots");
+  });
+  it("set slots to 2", () => {
+    render(<Admin />);
+    const inputElement = screen.getByTestId("parking-create-text-input");
+    const buttonElement = screen.getByTestId("parking-create-submit-button");
+    userEvent.type(inputElement, "2");
+    fireEvent.click(buttonElement);
+    expect(mockedUsedNavigate).toHaveBeenCalledWith("/slots");
+  });
 });
