@@ -7,18 +7,22 @@ const ExitFromParking = () => {
   const navigate = useNavigate();
   const { parkingSlots, stateId } = useContext(ParkingContext);
 
-  const handlePayNow = async (id: any) => {
-    let index: any = parkingSlots.findIndex((item: any) => item.id === stateId);
-    let regCarId = {
-      carId: id,
+  const handlePayNow = async (carNumber: any) => {
+    let index: any = parkingSlots?.findIndex(
+      (item: any) => item.id === stateId
+    );
+
+    let regNumber = {
+      carNumber: carNumber,
     };
+
     fetch("https://httpstat.us/200", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(regCarId),
+      body: JSON.stringify(regNumber),
     })
       .then((data) => {
         data.status === 200
@@ -37,11 +41,15 @@ const ExitFromParking = () => {
     (car: any) => car.id === stateId
   );
 
-  let entryHours = exitSlotDetails.time.getHours();
-  let entryMinutes = exitSlotDetails.time.getMinutes();
+  console.log(exitSlotDetails);
 
-  let currentHours = exitSlotDetails.time.getHours() + Math.random() * 10;
-  let currentMinutes = exitSlotDetails.time.getMinutes();
+  let entryHours: any = exitSlotDetails?.time
+    ? exitSlotDetails.time.getHours()
+    : null;
+  let entryMinutes = exitSlotDetails?.time.getMinutes();
+
+  let currentHours = exitSlotDetails?.time.getHours() + entryHours;
+  let currentMinutes = exitSlotDetails?.time.getMinutes();
 
   let totalEntryMinutes = entryHours * 60 + entryMinutes;
   let totalCurrentMinutes = currentHours * 60 + currentMinutes;
@@ -81,14 +89,22 @@ const ExitFromParking = () => {
           fontWeight="700"
           data-testid="deregister-car-registration"
         >
-          Car Number : {exitSlotDetails.carNumber}
+          Car Number : {exitSlotDetails?.carNumber}
+        </Typography>
+        <Typography variant="body1" fontWeight="700">
+          Entry Time: {entryHours} : {entryMinutes}{" "}
+          {entryHours > 12 ? "PM" : "AM"}
+        </Typography>
+        <Typography variant="body1" fontWeight="700">
+          Exit Time: {currentHours}:{currentMinutes}{" "}
+          {entryHours > 12 ? "PM" : "AM"}
         </Typography>
         <Typography
           variant="body1"
           fontWeight="700"
           data-testid="deregister-time-spent"
         >
-          Total Duration: {totalDuration}
+          Total Duration: {totalDuration} minutes
         </Typography>
         <Typography
           variant="body1"
@@ -100,7 +116,7 @@ const ExitFromParking = () => {
         <Button
           variant="contained"
           color="success"
-          onClick={() => handlePayNow(exitSlotDetails.id)}
+          onClick={() => handlePayNow(exitSlotDetails?.carNumber)}
           data-testid="deregister-payment-button"
           sx={{ margin: "10px" }}
         >
@@ -109,6 +125,7 @@ const ExitFromParking = () => {
         <Button
           variant="contained"
           color="secondary"
+          data-testid="deregister-back-button"
           onClick={() => navigate("/slots")}
         >
           Back

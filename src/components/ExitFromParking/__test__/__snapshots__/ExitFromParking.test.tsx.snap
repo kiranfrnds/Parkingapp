@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExitFromParking snap shot test render 1`] = `
+<div>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1pbuu5h-MuiContainer-root"
+  >
+    <div
+      class="MuiBox-root css-1xaekgw"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
+        data-testid="deregister-car-registration"
+      >
+        Car Number : 
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
+      >
+        Entry Time: 
+         : 
+         
+        AM
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
+      >
+        Exit Time: 
+        NaN
+        :
+         
+        AM
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
+        data-testid="deregister-time-spent"
+      >
+        Total Duration: 
+        NaN
+         minutes
+      </p>
+      <p
+        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
+        data-testid="deregister-charge"
+      >
+        Amount To be Paid: 
+        NaN
+      </p>
+      <button
+        class="MuiButton-root MuiButton-contained MuiButton-containedSuccess MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-bhgjed-MuiButtonBase-root-MuiButton-root"
+        data-testid="deregister-payment-button"
+        tabindex="0"
+        type="button"
+      >
+        Pay Now
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-zcbmsk-MuiButtonBase-root-MuiButton-root"
+        data-testid="deregister-back-button"
+        tabindex="0"
+        type="button"
+      >
+        Back
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;

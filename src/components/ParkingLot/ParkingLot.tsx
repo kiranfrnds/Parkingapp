@@ -33,12 +33,14 @@ const ParkingLot = () => {
       temp[index].carNumber = carNumber;
       temp[index].available = false;
       temp[index].startTime = new Date();
+      temp[index].spotNumber = Math.floor(Math.random() * 10000);
       setParkingSlots(temp);
       setCarNumber("");
     }
   };
 
   const handleExit = (id: any) => {
+    console.log(id);
     setStateId(id);
     navigate("/exit");
   };
@@ -71,7 +73,7 @@ const ParkingLot = () => {
           value={carNumber}
           fullWidth
           onChange={handleCarNumber}
-          data-testid="parking-drawing-registration-input"
+          inputProps={{ "data-testid": "parking-drawing-registration-input" }}
         />
         <Button
           variant="contained"
@@ -96,44 +98,63 @@ const ParkingLot = () => {
       >
         {parkingSlots?.map((each: any) => {
           return (
-            <Card
-              data-testid={`parking-drawing-space-${each.id}`}
-              sx={{
-                width: 150,
-                height: 200,
-                margin: 3,
-                border: "solid 1px black",
-                backgroundColor: each.available ? "white" : "#5738f2",
-              }}
-            >
-              <Typography
-                variant="h6"
-                textAlign="center"
-                color="#edf7f7"
-                fontWeight="400"
+            <>
+              <Card
+                data-testid={"parking-drawing-space"}
+                sx={{
+                  width: 150,
+                  height: 200,
+                  margin: 3,
+                  border: "solid 1px black",
+                  backgroundColor: each.available ? "white" : "#5738f2",
+                }}
               >
-                ID: {Math.floor(Math.random() * 100000)}
-              </Typography>
-              {!each.available ? (
-                <CardContent sx={{ textAlign: "center" }}>
-                  <Typography variant="body1" color="#edf7f7" fontWeight="400">
-                    Spot Number: {each.id}
-                  </Typography>
-                  <Typography variant="body1" color="#edf7f7" fontWeight="400">
-                    CarNumber:{each.carNumber}
-                  </Typography>
-                  <Typography variant="body1" color="#edf7f7" fontWeight="400">
-                    Time:{each.time.getHours()}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    onClick={() => handleExit(each.id)}
+                <Typography
+                  sx={{ textAlign: "center", marginTop: "10px" }}
+                  variant="body1"
+                  color="#edf7f7"
+                  fontWeight="400"
+                >
+                  spotNumber : {each.id}
+                </Typography>
+                {!each.available ? (
+                  <CardContent sx={{ textAlign: "center" }}>
+                    <Typography
+                      variant="body1"
+                      color="#edf7f7"
+                      fontWeight="400"
+                    >
+                      CarNumber:{each.carNumber}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="#edf7f7"
+                      fontWeight="400"
+                    >
+                      Entry Time: {each.time.getHours()}:
+                      {each.time.getMinutes()}{" "}
+                      {each.time.getHours() > 12 ? "PM" : "AM"}
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      onClick={() => handleExit(each.id)}
+                      data-testid={`parking-drawing-exit-button-${each.id}`}
+                    >
+                      Exit
+                    </Button>
+                  </CardContent>
+                ) : (
+                  <Typography
+                    sx={{ textAlign: "center", marginTop: "10px" }}
+                    variant="body1"
+                    color="#edf7f7"
+                    fontWeight="400"
                   >
-                    Exit
-                  </Button>
-                </CardContent>
-              ) : null}
-            </Card>
+                    ID : {each.id}
+                  </Typography>
+                )}
+              </Card>
+            </>
           );
         })}
       </Container>

@@ -1,17 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Parking Lot snap shot 1`] = `
+exports[`Admin snap shot 1`] = `
 <div>
   <div
-    class="MuiContainer-root MuiContainer-maxWidthLg css-14q7dda-MuiContainer-root"
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1g0jujm-MuiContainer-root"
   >
-    <h4
-      class="MuiTypography-root MuiTypography-h4 css-1890mk3-MuiTypography-root"
+    <h2
+      class="MuiTypography-root MuiTypography-h2 css-4w8q6y-MuiTypography-root"
     >
-      Parking Lot
-    </h4>
+      Admin
+    </h2>
     <div
       class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+      data-testid=" parking-create-text-input"
     >
       <label
         class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -19,7 +20,7 @@ exports[`Parking Lot snap shot 1`] = `
         for="slots"
         id="slots-label"
       >
-        Enter Car Number
+        Enter Number of Slots
       </label>
       <div
         class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
@@ -27,7 +28,6 @@ exports[`Parking Lot snap shot 1`] = `
         <input
           aria-invalid="false"
           class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-          data-testid="parking-drawing-registration-input"
           id="slots"
           type="text"
           value=""
@@ -40,26 +40,23 @@ exports[`Parking Lot snap shot 1`] = `
             class="css-1ftyaf0"
           >
             <span>
-              Enter Car Number
+              Enter Number of Slots
             </span>
           </legend>
         </fieldset>
       </div>
     </div>
     <button
-      class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-1nclpby-MuiButtonBase-root-MuiButton-root"
-      data-testid="parking-drawing-add-car-button"
+      class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-s3awaj-MuiButtonBase-root-MuiButton-root"
+      data-testid="parking-create-submit-button"
       tabindex="0"
       type="button"
     >
-      Park
+      Submit
       <span
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>
-  <div
-    class="MuiContainer-root MuiContainer-maxWidthLg css-xkho84-MuiContainer-root"
-  />
 </div>
 `;
