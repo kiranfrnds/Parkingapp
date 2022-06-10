@@ -60,7 +60,7 @@ const Admin = () => {
         value={slots}
         onChange={handleSlot}
         fullWidth
-        data-testid=" parking-create-text-input"
+        inputProps={{ "data-testid": " parking-create-text-input" }}
       />
       <Button
         variant="contained"

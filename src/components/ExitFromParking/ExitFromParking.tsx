@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Container, Box, Typography, Button } from "@mui/material";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,7 @@ const ExitFromParking = () => {
     let index: any = parkingSlots?.findIndex(
       (item: any) => item.id === stateId
     );
-
+    console.log("index", index);
     let regNumber = {
       carNumber: carNumber,
     };
@@ -26,15 +27,16 @@ const ExitFromParking = () => {
     })
       .then((data) => {
         data.status === 200
-          ? alert("Payment Successful")
+          ? (alert("Payment Successful"), navigate("/slots"))
           : alert("Payment Unsuccefull");
       })
       .catch((err) => alert(err));
+
     if (index !== "") {
+      console.log("---------------------", index, stateId);
       parkingSlots[index].carNumber = "";
       parkingSlots[index].available = true;
     }
-    navigate("/slots");
   };
 
   let exitSlotDetails: any = parkingSlots.find(
@@ -48,8 +50,8 @@ const ExitFromParking = () => {
     : null;
   let entryMinutes = exitSlotDetails?.time.getMinutes();
 
-  let currentHours = exitSlotDetails?.time.getHours() + entryHours;
-  let currentMinutes = exitSlotDetails?.time.getMinutes();
+  let currentHours = new Date().getHours();
+  let currentMinutes = new Date().getMinutes();
 
   let totalEntryMinutes = entryHours * 60 + entryMinutes;
   let totalCurrentMinutes = currentHours * 60 + currentMinutes;
@@ -61,6 +63,9 @@ const ExitFromParking = () => {
 
   let totalCharge = 0;
 
+  // if (totalHours === 0 && totalMinutes === 0) {
+  //   totalCharge = 0;
+  // } else
   if (totalHours <= 2) {
     totalCharge = 10;
   } else if (totalMinutes > 0) {
@@ -91,20 +96,12 @@ const ExitFromParking = () => {
         >
           Car Number : {exitSlotDetails?.carNumber}
         </Typography>
-        <Typography variant="body1" fontWeight="700">
-          Entry Time: {entryHours} : {entryMinutes}{" "}
-          {entryHours > 12 ? "PM" : "AM"}
-        </Typography>
-        <Typography variant="body1" fontWeight="700">
-          Exit Time: {currentHours}:{currentMinutes}{" "}
-          {entryHours > 12 ? "PM" : "AM"}
-        </Typography>
         <Typography
           variant="body1"
           fontWeight="700"
           data-testid="deregister-time-spent"
         >
-          Total Duration: {totalDuration} minutes
+          Total Duration: {totalHours} Hours {totalMinutes} Minutes
         </Typography>
         <Typography
           variant="body1"

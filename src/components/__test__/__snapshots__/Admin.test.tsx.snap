@@ -12,7 +12,6 @@ exports[`Admin snap shot 1`] = `
     </h2>
     <div
       class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
-      data-testid=" parking-create-text-input"
     >
       <label
         class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
@@ -28,6 +27,7 @@ exports[`Admin snap shot 1`] = `
         <input
           aria-invalid="false"
           class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+          data-testid=" parking-create-text-input"
           id="slots"
           type="text"
           value=""

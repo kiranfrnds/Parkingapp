@@ -2,8 +2,8 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Admin from "../Admin";
-import { ParkingContext } from "../../../ParkingContext/ParkingContext";
+import Admin from "../Admin/Admin";
+import { ParkingContext } from "../../ParkingContext/ParkingContext";
 
 const mockedUsedNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
@@ -40,6 +40,18 @@ describe("Admin", () => {
     userEvent.type(input, "1");
     userEvent.click(button);
     expect(value.setParkingSlots).toHaveBeenCalledTimes(1);
+  });
+  it("show show alert error when user entered string ", async () => {
+    const { getByTestId } = render(
+      <ParkingContext.Provider value={value}>
+        <Admin />
+      </ParkingContext.Provider>
+    );
+    const input = getByTestId("parking-create-text-input");
+    const button = getByTestId("parking-create-submit-button");
+    fireEvent.change(input, { target: { value: "a" } });
+    fireEvent.click(button);
+    expect(window.alert).toHaveBeenCalledTimes(1);
   });
 
   // it("should render", () => {

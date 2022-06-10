@@ -16,28 +16,13 @@ exports[`ExitFromParking snap shot test render 1`] = `
       </p>
       <p
         class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
-      >
-        Entry Time: 
-         : 
-         
-        AM
-      </p>
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
-      >
-        Exit Time: 
-        NaN
-        :
-         
-        AM
-      </p>
-      <p
-        class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"
         data-testid="deregister-time-spent"
       >
         Total Duration: 
         NaN
-         minutes
+         Hours 
+        NaN
+         Minutes
       </p>
       <p
         class="MuiTypography-root MuiTypography-body1 css-ndaqpv-MuiTypography-root"

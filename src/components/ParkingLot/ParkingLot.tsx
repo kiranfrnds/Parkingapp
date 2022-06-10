@@ -28,19 +28,19 @@ const ParkingLot = () => {
     if (freeParkingSlots.length === 0) {
       alert("Parking Slots are Full");
     } else {
+      //write test case for this
       const id = freeParkingSlots[Math.floor(Math.random() * temp.length)].id;
       const index = temp.findIndex((i) => i.id === id);
       temp[index].carNumber = carNumber;
       temp[index].available = false;
       temp[index].startTime = new Date();
-      temp[index].spotNumber = Math.floor(Math.random() * 10000);
+      // temp[index].spotNumber = Math.floor(Math.random() * 10000);
       setParkingSlots(temp);
       setCarNumber("");
     }
   };
 
   const handleExit = (id: any) => {
-    console.log(id);
     setStateId(id);
     navigate("/exit");
   };
@@ -108,6 +108,7 @@ const ParkingLot = () => {
                   border: "solid 1px black",
                   backgroundColor: each.available ? "white" : "#5738f2",
                 }}
+                onClick={() => handleExit(each.id)}
               >
                 <Typography
                   sx={{ textAlign: "center", marginTop: "10px" }}
@@ -115,7 +116,7 @@ const ParkingLot = () => {
                   color="#edf7f7"
                   fontWeight="400"
                 >
-                  spotNumber : {each.id}
+                  Spot Number : {each.id}
                 </Typography>
                 {!each.available ? (
                   <CardContent sx={{ textAlign: "center" }}>
@@ -126,7 +127,7 @@ const ParkingLot = () => {
                     >
                       CarNumber:{each.carNumber}
                     </Typography>
-                    <Typography
+                    {/* <Typography
                       variant="body1"
                       color="#edf7f7"
                       fontWeight="400"
@@ -134,14 +135,7 @@ const ParkingLot = () => {
                       Entry Time: {each.time.getHours()}:
                       {each.time.getMinutes()}{" "}
                       {each.time.getHours() > 12 ? "PM" : "AM"}
-                    </Typography>
-                    <Button
-                      variant="contained"
-                      onClick={() => handleExit(each.id)}
-                      data-testid={`parking-drawing-exit-button-${each.id}`}
-                    >
-                      Exit
-                    </Button>
+                    </Typography> */}
                   </CardContent>
                 ) : (
                   <Typography
@@ -150,7 +144,7 @@ const ParkingLot = () => {
                     color="#edf7f7"
                     fontWeight="400"
                   >
-                    ID : {each.id}
+                    {/* ID : {each.id} */}
                   </Typography>
                 )}
               </Card>
